@@ -1,9 +1,6 @@
 name: Build & test project
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
     branches:
       - main
@@ -25,3 +22,8 @@ jobs:
         working-directory: .
         run: |
           mvn test
+
+      - name: Run mutation tests with Pitest
+        working-directory: .
+        run: |
+          mvn org.pitest:pitest-maven:mutationCoverage
